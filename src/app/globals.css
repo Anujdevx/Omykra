@@ -1,26 +1,118 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  /* Primary palette */
+  --color-primary: #00AB45;
+  --color-primary-dark: #084734;
+  --color-primary-light: #e6f9ee;
+
+  /* Neutrals */
+  --color-neutral-dark: #0B0F1A;
+  --color-neutral-900: #1a1a2e;
+  --color-neutral-800: #2d2d44;
+  --color-neutral-700: #444444;
+  --color-neutral-500: #808080;
+  --color-neutral-300: #D1D1D1;
+  --color-neutral-100: #F3F3F3;
+  --color-neutral-50: #f9f9f7;
+
+  /* Accents */
+  --color-accent-purple: #8A38F5;
+  --color-accent-amber: rgba(245, 158, 11, 0.05);
+  --color-accent-blue: rgba(59, 130, 246, 0.05);
+  --color-accent-red: rgba(239, 68, 68, 0.05);
+  --color-accent-green: rgba(0, 171, 69, 0.05);
+
+  /* Typography */
+  --font-heading: var(--font-spectral);
+  --font-body: var(--font-inter);
+
+  /* Shadows */
+  --shadow-card: -7px 24px 48px rgba(0, 0, 0, 0.1);
+  --shadow-card-hover: -7px 28px 56px rgba(0, 0, 0, 0.14);
+  --shadow-navbar: 0 4px 30px rgba(0, 0, 0, 0.06);
+
+  /* Radius */
+  --radius-card: 16px;
+  --radius-card-lg: 24px;
+  --radius-button: 48px;
+  --radius-hero: 64px;
+  --radius-input: 48px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --background: #ffffff;
+  --foreground: #0B0F1A;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+/* Hide default cursor on desktop for custom cursor */
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}
+
+/* Show default cursor on touch devices */
+@media (pointer: coarse) {
+  * {
+    cursor: auto !important;
+  }
+}
+
+/* Selection color */
+::selection {
+  background-color: rgba(0, 171, 69, 0.2);
+  color: #084734;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D1D1D1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #808080;
+}
+
+/* Glass morphism utility */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(129deg, #00AB45 14%, #084734 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Primary gradient background */
+.gradient-primary {
+  background: linear-gradient(129deg, #00AB45 14%, #084734 100%);
 }
