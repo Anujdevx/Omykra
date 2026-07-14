@@ -4,8 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { FadeUp } from "./MotionWrappers";
 import { ArrowUpRight } from "lucide-react";
-import { GithubIcon } from "@/components/Icons"; // We'll assume icons are available or use standard Lucide if exact matches aren't crucial for socials
-
 const footerSections = [
   {
     title: "Product",
