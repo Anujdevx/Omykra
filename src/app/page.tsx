@@ -178,9 +178,9 @@ export default function HomePage() {
       <Navbar />
 
       {/* ── Hero Section ──────────────────────────────────────────────── */}
-      <section className="pt-[72px]">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10 pt-10 md:pt-16">
-          <div className="relative overflow-hidden rounded-[64px] bg-primary px-6 md:px-16 py-20 md:py-28">
+      <section className="pt-[72px] pb-12 md:pb-16">
+        <div className="max-w-[1280px] mx-auto px-4 md:px-10 pt-6 md:pt-12">
+          <div className="relative overflow-hidden rounded-[40px] md:rounded-[64px] bg-primary px-6 md:px-16 py-16 md:py-24 lg:py-32">
             {/* Background pattern images from Figma */}
             <div className="absolute inset-0 overflow-hidden">
               <Image
@@ -212,11 +212,11 @@ export default function HomePage() {
               />
             </div>
 
-            <div className="relative z-10 flex flex-col items-center text-center max-w-[1200px] mx-auto gap-12">
+            <div className="relative z-10 flex flex-col items-center text-center max-w-[1200px] mx-auto gap-10 md:gap-12">
               {/* Heading + Subtext */}
               <div className="flex flex-col items-center gap-6 px-4 md:px-10">
                 <motion.h1
-                  className="font-[family-name:var(--font-heading)] text-3xl md:text-5xl lg:text-[72px] font-semibold text-white leading-tight lg:leading-[80px] tracking-[-0.02em]"
+                  className="font-[family-name:var(--font-heading)] text-3xl md:text-5xl lg:text-[56px] font-semibold text-white leading-tight md:leading-[1.15] tracking-tight max-w-4xl mx-auto"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.4, 0.25, 1] }}
@@ -225,7 +225,7 @@ export default function HomePage() {
                 </motion.h1>
 
                 <motion.p
-                  className="text-base md:text-xl text-white/80 max-w-[900px] leading-relaxed"
+                  className="text-base md:text-lg text-white/80 max-w-2xl leading-relaxed"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
@@ -266,16 +266,16 @@ export default function HomePage() {
       </section>
 
       {/* ── Section 2: Problem Statement ──────────────────────────────── */}
-      <section className="py-20 md:py-[100px]">
-        <div className="max-w-[1062px] mx-auto px-6 lg:px-10">
-          <div className="text-center mb-[60px]">
+      <section className="py-16 md:py-24">
+        <div className="max-w-6xl mx-auto px-6 md:px-12">
+          <div className="text-center mb-12 md:mb-16">
             <TypewriterHeader
               text="That Poor Customer Experience Could Have Been Prevented."
               tag="h2"
-              className="font-[family-name:var(--font-heading)] text-3xl md:text-[48px] font-semibold text-neutral-dark leading-tight"
+              className="font-[family-name:var(--font-heading)] text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-dark leading-tight tracking-tight max-w-3xl mx-auto"
             />
             <FadeUp delay={0.2}>
-              <p className="text-neutral-500 text-base md:text-xl mt-6 leading-relaxed max-w-[900px] mx-auto">
+              <p className="text-neutral-500 text-base md:text-lg mt-6 leading-relaxed max-w-2xl mx-auto">
                 Customer experience shouldn&apos;t depend on who replies, how
                 experienced they are, or whether they&apos;re having a good day.
                 Yet that&apos;s exactly what happens in most support teams.
@@ -291,13 +291,13 @@ export default function HomePage() {
                 alt="Customer experience flow showing how different agents create inconsistent experiences"
                 width={1280}
                 height={484}
-                className="w-full h-auto rounded-lg"
+                className="w-full h-auto rounded-[24px] shadow-sm"
               />
             </div>
           </FadeUp>
 
           <FadeUp delay={0.3}>
-            <p className="text-center font-[family-name:var(--font-heading)] text-lg md:text-2xl font-medium text-neutral-dark mt-12 leading-relaxed max-w-[900px] mx-auto">
+            <p className="text-center font-[family-name:var(--font-heading)] text-lg md:text-xl font-medium text-neutral-dark mt-12 leading-relaxed max-w-2xl mx-auto">
               Every escalation, bad review and missed CSAT target have one thing
               in common. The quality of the experience depended on who answered the
               conversation. One customer, different experience depending on who
@@ -308,16 +308,16 @@ export default function HomePage() {
       </section>
 
       {/* ── Section 3: Meet Your AI Coworker ──────────────────────────── */}
-      <section className="py-20 md:py-[100px]">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10 flex flex-col items-center gap-[60px]">
+      <section className="py-16 md:py-24">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-10 flex flex-col items-center gap-12">
           <div className="text-center max-w-[1062px]">
             <FadeUp>
-              <h2 className="font-[family-name:var(--font-heading)] text-3xl md:text-[48px] font-semibold text-neutral-dark leading-tight">
+              <h2 className="font-[family-name:var(--font-heading)] text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-dark leading-tight tracking-tight max-w-3xl mx-auto">
                 Meet Your <span className="text-primary">AI Coworker.</span>
               </h2>
             </FadeUp>
             <FadeUp delay={0.15}>
-              <p className="text-neutral-500 text-base md:text-xl mt-6 leading-relaxed">
+              <p className="text-neutral-500 text-base md:text-lg mt-6 leading-relaxed max-w-2xl mx-auto">
                 Omykra supports your agents while they are replying, helping them
                 find the right answer and communicate it with confidence regardless
                 of who is behind it, how long they have been there and how they are
@@ -328,7 +328,7 @@ export default function HomePage() {
 
           {/* Step screenshot from Figma */}
           <FadeUp>
-            <div className="w-full flex flex-col lg:flex-row items-center gap-16">
+            <div className="w-full flex flex-col lg:flex-row items-center gap-12">
               <div className="lg:w-[55%]">
                 <Image
                   src="/images/step-screenshot.png"
@@ -344,12 +344,12 @@ export default function HomePage() {
                     <FadeUp key={step} delay={0.1 * (i + 1)}>
                       <div className="flex items-center gap-6">
                         <div
-                          className={`w-1 h-[100px] rounded-[10px] ${
+                          className={`w-1 h-[90px] rounded-[10px] ${
                             i === 0 ? "bg-primary-dark" : "bg-primary-dark/10"
                           }`}
                         />
                         <div className="flex-1">
-                          <h4 className="font-[family-name:var(--font-heading)] text-xl md:text-2xl font-medium text-neutral-dark mb-2">
+                          <h4 className="font-[family-name:var(--font-heading)] text-lg md:text-xl font-medium text-neutral-dark mb-1">
                             {step}
                           </h4>
                           <p className="text-neutral-500 text-sm md:text-base leading-relaxed">
@@ -369,16 +369,16 @@ export default function HomePage() {
       </section>
 
       {/* ── Section 4: Built For Teams ─────────────────────────────────── */}
-      <section id="features" className="py-20 md:py-[100px]">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10 flex flex-col items-center gap-[60px]">
+      <section id="features" className="py-16 md:py-24">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-10 flex flex-col items-center gap-12">
           <div className="text-center max-w-[1062px]">
             <TypewriterHeader
               text="Built For Teams That Care About Consistency."
               tag="h2"
-              className="font-[family-name:var(--font-heading)] text-3xl md:text-[48px] font-semibold text-neutral-dark leading-tight"
+              className="font-[family-name:var(--font-heading)] text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-dark leading-tight tracking-tight max-w-3xl mx-auto"
             />
             <FadeUp delay={0.15}>
-              <p className="text-neutral-500 text-base md:text-xl mt-6 leading-relaxed">
+              <p className="text-neutral-500 text-base md:text-lg mt-6 leading-relaxed max-w-2xl mx-auto">
                 Whether you&apos;re onboarding new agents, scaling rapidly or
                 supporting thousands of conservations every month, OmyKra helps
                 your team deliver the same standard every time.
@@ -399,16 +399,16 @@ export default function HomePage() {
       </section>
 
       {/* ── Section 5: Integrations ───────────────────────────────────── */}
-      <section className="py-20 md:py-[100px]">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10 flex flex-col items-center gap-[60px]">
+      <section className="py-16 md:py-24">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-10 flex flex-col items-center gap-12">
           <div className="text-center max-w-[1062px]">
             <FadeUp>
-              <h2 className="font-[family-name:var(--font-heading)] text-3xl md:text-[48px] font-semibold text-neutral-dark leading-tight">
+              <h2 className="font-[family-name:var(--font-heading)] text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-dark leading-tight tracking-tight max-w-3xl mx-auto">
                 Built Into The Tools You Already Use.
               </h2>
             </FadeUp>
             <FadeUp delay={0.15}>
-              <p className="text-neutral-500 text-base md:text-xl mt-6 leading-relaxed">
+              <p className="text-neutral-500 text-base md:text-lg mt-6 leading-relaxed max-w-2xl mx-auto">
                 OmyKra works alongside the platforms your team already relies on,
                 so agents stay in their existing workflow while receiving guidance
                 exactly when they need it.
@@ -445,19 +445,19 @@ export default function HomePage() {
       </section>
 
       {/* ── Section 6: With/Without OmyKra ────────────────────────────── */}
-      <section className="py-20 md:py-[100px]">
+      <section className="py-16 md:py-24">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
-          <div className="flex flex-col lg:flex-row justify-between items-center gap-12">
+          <div className="flex flex-col lg:flex-row justify-between items-center gap-12 lg:gap-16">
             {/* Left text */}
-            <div className="lg:w-[435px] space-y-12">
+            <div className="lg:w-[435px] space-y-10 shrink-0">
               <div className="space-y-6">
                 <FadeUp>
-                  <h2 className="font-[family-name:var(--font-heading)] text-3xl md:text-[48px] font-semibold text-neutral-dark leading-tight">
+                  <h2 className="font-[family-name:var(--font-heading)] text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-dark leading-tight tracking-tight">
                     CX Without <span className="text-primary">OmyKra?</span>
                   </h2>
                 </FadeUp>
                 <FadeUp delay={0.15}>
-                  <p className="text-neutral-500 text-base md:text-xl leading-relaxed">
+                  <p className="text-neutral-500 text-base md:text-lg leading-relaxed max-w-md">
                     The difference isn&apos;t how hard your team works. It&apos;s
                     whether every agent has the same support when helping customers.
                   </p>
@@ -490,16 +490,16 @@ export default function HomePage() {
       </section>
 
       {/* ── Section 7: Security ───────────────────────────────────────── */}
-      <section className="py-20 md:py-[100px]">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10 flex flex-col items-center gap-[60px]">
+      <section className="py-16 md:py-24">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-10 flex flex-col items-center gap-12">
           <div className="text-center max-w-[1062px]">
             <TypewriterHeader
               text="Secured From Day One!"
               tag="h2"
-              className="font-[family-name:var(--font-heading)] text-3xl md:text-[48px] font-semibold text-neutral-dark leading-tight"
+              className="font-[family-name:var(--font-heading)] text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-dark leading-tight tracking-tight max-w-3xl mx-auto"
             />
             <FadeUp delay={0.15}>
-              <p className="text-neutral-500 text-base md:text-xl mt-6 leading-relaxed">
+              <p className="text-neutral-500 text-base md:text-lg mt-6 leading-relaxed max-w-2xl mx-auto">
                 Designed with enterprise teams in mind. Built around transparency,
                 security, and human control.
               </p>
@@ -520,10 +520,10 @@ export default function HomePage() {
                       {card.icon}
                     </div>
                     <div className="flex flex-col gap-2 flex-1">
-                      <h4 className="font-[family-name:var(--font-heading)] text-xl md:text-[28px] font-medium text-neutral-dark leading-snug">
+                      <h4 className="font-[family-name:var(--font-heading)] text-lg md:text-xl font-medium text-neutral-dark leading-snug">
                         {card.title}
                       </h4>
-                      <p className="text-neutral-dark text-sm md:text-base leading-relaxed">
+                      <p className="text-neutral-500 text-sm leading-relaxed">
                         {card.description}
                       </p>
                     </div>
@@ -536,17 +536,17 @@ export default function HomePage() {
       </section>
 
       {/* ── Section 8: AI CX vs AI Assisted CX ────────────────────────── */}
-      <section className="py-20 md:py-[100px]">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10 flex flex-col items-center gap-[60px]">
+      <section className="py-16 md:py-24">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-10 flex flex-col items-center gap-12">
           <div className="text-center max-w-[1062px]">
             <FadeUp>
-              <h2 className="font-[family-name:var(--font-heading)] text-3xl md:text-[48px] font-semibold text-neutral-dark leading-tight">
+              <h2 className="font-[family-name:var(--font-heading)] text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-dark leading-tight tracking-tight max-w-3xl mx-auto">
                 AI CX or{" "}
                 <span className="text-primary">AI Assisted CX (OmyKra)?</span>
               </h2>
             </FadeUp>
             <FadeUp delay={0.15}>
-              <p className="text-neutral-500 text-base md:text-xl mt-6 leading-relaxed">
+              <p className="text-neutral-500 text-base md:text-lg mt-6 leading-relaxed max-w-2xl mx-auto">
                 We believe AI shouldn&apos;t replace your customer support team. It
                 should help them become better.
               </p>
@@ -556,14 +556,14 @@ export default function HomePage() {
           <div className="flex flex-col lg:flex-row gap-[60px] items-stretch w-full">
             {/* Traditional AI CX */}
             <ScaleIn className="flex-1">
-              <div className="bg-[rgba(239,68,68,0.05)] rounded-[24px] p-[60px] shadow-card h-full flex flex-col items-center gap-20">
+              <div className="bg-[rgba(239,68,68,0.05)] rounded-[24px] p-10 lg:p-12 shadow-card h-full flex flex-col items-center gap-16">
                 <div className="flex items-center gap-6 w-full justify-between">
                   <Image
                     src="/images/ai-robot.png"
                     alt="AI Robot"
-                    width={120}
-                    height={146}
-                    className="w-[120px] h-auto"
+                    width={100}
+                    height={122}
+                    className="w-[100px] h-auto"
                   />
                   <div className="bg-white border border-neutral-300 rounded-2xl p-5 flex-1 max-w-[294px]">
                     <p className="text-sm text-neutral-dark">
@@ -586,7 +586,7 @@ export default function HomePage() {
                     ].map((item) => (
                       <li key={item} className="flex items-start gap-3">
                         <span className="text-red-500 mt-1">✕</span>
-                        <span className="text-neutral-dark text-base">{item}</span>
+                        <span className="text-neutral-dark text-sm md:text-base">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -596,14 +596,14 @@ export default function HomePage() {
 
             {/* OmyKra AI Assisted CX */}
             <ScaleIn delay={0.15} className="flex-1">
-              <div className="bg-[rgba(0,171,69,0.05)] rounded-[24px] p-[60px] shadow-card h-full flex flex-col items-center gap-20">
+              <div className="bg-[rgba(0,171,69,0.05)] rounded-[24px] p-10 lg:p-12 shadow-card h-full flex flex-col items-center gap-16">
                 <div className="flex items-center gap-6 w-full justify-between">
                   <Image
                     src="/images/omykra-human.png"
                     alt="Human agent assisted by OmyKra"
-                    width={240}
-                    height={240}
-                    className="w-[140px] h-auto"
+                    width={200}
+                    height={200}
+                    className="w-[120px] h-auto"
                   />
                   <div className="bg-white border border-primary rounded-2xl p-5 flex-1 max-w-[196px]">
                     <p className="text-sm text-neutral-dark">
@@ -626,7 +626,7 @@ export default function HomePage() {
                     ].map((item) => (
                       <li key={item} className="flex items-start gap-3">
                         <span className="text-primary mt-1">✓</span>
-                        <span className="text-neutral-dark text-base">{item}</span>
+                        <span className="text-neutral-dark text-sm md:text-base">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -638,13 +638,13 @@ export default function HomePage() {
       </section>
 
       {/* ── Section 9: Founder ────────────────────────────────────────── */}
-      <section className="py-20 md:py-[100px]">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10 flex flex-col items-center gap-[60px]">
+      <section className="py-16 md:py-24">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-10 flex flex-col items-center gap-12">
           <div className="text-center max-w-[1062px]">
             <TypewriterHeader
               text="Built By Someone Who Lived The Problem."
               tag="h2"
-              className="font-[family-name:var(--font-heading)] text-3xl md:text-[48px] font-semibold text-neutral-dark leading-tight"
+              className="font-[family-name:var(--font-heading)] text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-dark leading-tight tracking-tight max-w-3xl mx-auto"
             />
           </div>
 
@@ -659,8 +659,8 @@ export default function HomePage() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="flex-1 border border-neutral-300 border-l-0 p-10 md:p-10 flex flex-col justify-between">
-                <blockquote className="font-[family-name:var(--font-heading)] text-xl md:text-[36px] font-semibold text-neutral-dark leading-snug md:leading-[44px]">
+              <div className="flex-1 border border-neutral-300 border-l-0 p-10 md:p-12 flex flex-col justify-between">
+                <blockquote className="font-[family-name:var(--font-heading)] text-xl md:text-3xl lg:text-4xl font-medium text-neutral-dark leading-snug tracking-tight">
                   &ldquo;I built the communication standard I wish I had access to
                   when I was running CX.{" "}
                   <span className="text-neutral-500">
@@ -680,16 +680,16 @@ export default function HomePage() {
       </section>
 
       {/* ── Section 10: Pricing ───────────────────────────────────────── */}
-      <section id="pricing" className="py-20 md:py-[100px]">
+      <section id="pricing" className="py-16 md:py-24">
         <div className="max-w-[1062px] mx-auto px-6 lg:px-10">
-          <div className="mb-[60px]">
+          <div className="mb-12 md:mb-16 text-center">
             <TypewriterHeader
               text="Built For Teams Who Already Have A Standard Worth Protecting."
               tag="h2"
-              className="font-[family-name:var(--font-heading)] text-3xl md:text-[48px] font-semibold text-neutral-dark leading-tight"
+              className="font-[family-name:var(--font-heading)] text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-dark leading-tight tracking-tight max-w-3xl mx-auto"
             />
             <FadeUp delay={0.15}>
-              <p className="text-neutral-500 text-base md:text-xl mt-6 leading-relaxed">
+              <p className="text-neutral-500 text-base md:text-lg mt-6 leading-relaxed max-w-2xl mx-auto">
                 Everyone organisation is different. We&apos;ll tailor OmyKra to
                 your team, your workflow, and your standards.
               </p>
@@ -699,15 +699,15 @@ export default function HomePage() {
           <FadeUp>
             <div className="flex flex-col lg:flex-row justify-between items-start gap-10">
               {/* Pricing Card */}
-              <div className="bg-white rounded-[24px] shadow-card p-[60px] flex flex-col items-center gap-6 w-full lg:w-[520px]">
+              <div className="bg-white rounded-[24px] shadow-card p-10 lg:p-12 flex flex-col items-center gap-6 w-full lg:w-[520px]">
                 <span className="inline-block bg-[rgba(0,171,69,0.05)] text-primary text-sm font-medium px-5 py-2.5 rounded-full">
                   STARTS FROM
                 </span>
                 <div className="flex items-center gap-3">
-                  <span className="font-[family-name:var(--font-heading)] text-5xl md:text-[56px] font-semibold text-neutral-dark">
+                  <span className="font-[family-name:var(--font-heading)] text-4xl md:text-5xl font-semibold text-neutral-dark">
                     £2,500
                   </span>
-                  <span className="text-neutral-500 text-xl">/month</span>
+                  <span className="text-neutral-500 text-lg">/month</span>
                 </div>
                 <p className="text-neutral-500 text-sm text-center max-w-[400px]">
                   Every organization is different. That&apos;s why OmyKra is
@@ -770,18 +770,18 @@ export default function HomePage() {
       </section>
 
       {/* ── Section 11: FAQ ───────────────────────────────────────────── */}
-      <section className="py-20 md:py-[100px]">
+      <section className="py-16 md:py-24">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
-          <div className="flex flex-col lg:flex-row justify-between gap-12">
+          <div className="flex flex-col lg:flex-row justify-between gap-16">
             {/* Left */}
-            <div className="lg:w-[430px] lg:flex-shrink-0">
+            <div className="lg:w-[480px] lg:flex-shrink-0">
               <FadeUp>
-                <h2 className="font-[family-name:var(--font-heading)] text-3xl md:text-[48px] font-semibold text-neutral-dark leading-tight">
+                <h2 className="font-[family-name:var(--font-heading)] text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-dark leading-tight tracking-tight max-w-md">
                   Frequently Asked Questions.
                 </h2>
               </FadeUp>
               <FadeUp delay={0.15}>
-                <p className="text-neutral-500 text-base md:text-xl mt-6 leading-relaxed">
+                <p className="text-neutral-500 text-base md:text-lg mt-6 leading-relaxed max-w-sm">
                   Everything you need to know before bringing OmyKra into your
                   customer experience workflow. If you don&apos;t see your question
                   here, we&apos;d happy to walk you through it.
@@ -807,10 +807,10 @@ export default function HomePage() {
       </section>
 
       {/* ── Section 13: Bottom CTA ────────────────────────────────────── */}
-      <section className="py-16 md:py-20">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
+      <section className="py-16 md:py-24">
+        <div className="max-w-[1280px] mx-auto px-4 md:px-10">
           <ScaleIn>
-            <div className="relative overflow-hidden bg-primary px-6 md:px-16 py-24 md:py-32 text-center">
+            <div className="relative overflow-hidden bg-primary rounded-[40px] md:rounded-[64px] px-6 md:px-16 py-16 md:py-24 text-center">
               {/* Background patterns */}
               <div className="absolute inset-0 overflow-hidden">
                 <Image
@@ -842,12 +842,12 @@ export default function HomePage() {
                 />
               </div>
 
-              <div className="relative z-10 max-w-[567px] mx-auto flex flex-col items-center gap-12">
+              <div className="relative z-10 max-w-[800px] mx-auto flex flex-col items-center gap-10 md:gap-12">
                 <div className="space-y-6">
-                  <h2 className="font-[family-name:var(--font-heading)] text-3xl md:text-[56px] font-semibold text-white leading-tight md:leading-[64px]">
+                  <h2 className="font-[family-name:var(--font-heading)] text-3xl md:text-5xl lg:text-[56px] font-semibold text-white leading-tight md:leading-[1.15] tracking-tight max-w-3xl mx-auto">
                     From Their First Day, To Your Busiest Day,{"\n"}Same Quality.
                   </h2>
-                  <p className="text-white/80 text-base md:text-xl leading-relaxed max-w-[360px] mx-auto">
+                  <p className="text-white/80 text-base md:text-lg leading-relaxed max-w-md mx-auto">
                     Build a walkthrough and see how OmyKra helps every agent deliver
                     the same communication standard.
                   </p>
