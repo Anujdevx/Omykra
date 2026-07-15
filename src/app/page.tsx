@@ -27,7 +27,7 @@ import {
   UserCheck,
   Users,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 /* ─── Data from Figma ─────────────────────────────────────────────────────── */
 
@@ -208,6 +208,116 @@ function FAQItem({
 }
 
 /* ─── Page ────────────────────────────────────────────────────────────────── */
+
+/* ─── AI Coworker Interactive Component ───────────────────────────────────── */
+
+function AICoworkerInteractive() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  
+  const steps = [
+    {
+      title: "Rewrite with brand voice",
+      desc: "Transform any response into your brand's tone and quality standard.",
+      img: "/images/step-screenshot.png"
+    },
+    {
+      title: "Get contextual help",
+      desc: "Get real-time suggestions based on your knowledge base and best practices.",
+      img: "/images/Ai-worker_2.png"
+    },
+    {
+      title: "Insert approved answers",
+      desc: "Pull pre-approved answers from your library with one click.",
+      img: "/images/Ai-worker_3.png"
+    }
+  ];
+
+  useEffect(() => {
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const stepElements = document.querySelectorAll('.ai-step-item');
+          if (stepElements.length === 0) return;
+          
+          let minDistance = Infinity;
+          let closestIndex = 0;
+          const viewportCenter = window.innerHeight / 2;
+
+          stepElements.forEach((el, index) => {
+            const rect = el.getBoundingClientRect();
+            const elCenter = rect.top + rect.height / 2;
+            const distance = Math.abs(viewportCenter - elCenter);
+            
+            if (distance < minDistance) {
+              minDistance = distance;
+              closestIndex = index;
+            }
+          });
+          
+          setActiveIndex(closestIndex);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial check
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <div className="w-full flex flex-col lg:flex-row items-start gap-12 relative">
+      {/* Left: Sticky Image Container */}
+      <div className="lg:w-[55%] sticky top-32 z-10 pt-10 lg:pt-32">
+        <div className="relative w-full aspect-[720/443] rounded-2xl shadow-card overflow-hidden bg-white/50">
+          <AnimatePresence>
+            <motion.div
+              key={activeIndex}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+              className="absolute inset-0"
+            >
+              <Image
+                src={steps[activeIndex].img}
+                alt={steps[activeIndex].title}
+                fill
+                className="object-cover w-full h-full"
+              />
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </div>
+
+      {/* Right: Scrollable Steps */}
+      <div className="lg:w-[45%] flex flex-col mt-10 lg:mt-0 pb-[30vh]">
+        {steps.map((step, i) => (
+          <div 
+            key={step.title}
+            className={`ai-step-item flex items-center gap-6 py-16 lg:py-56 transition-opacity duration-500 ${activeIndex === i ? 'opacity-100' : 'opacity-30'}`}
+          >
+            <div
+              className={`w-1 h-[90px] rounded-[10px] transition-colors duration-500 ${
+                activeIndex === i ? "bg-primary-dark" : "bg-primary-dark/20"
+              }`}
+            />
+            <div className="flex-1">
+              <h4 className="font-[family-name:var(--font-heading)] text-2xl md:text-3xl font-medium text-neutral-dark mb-4">
+                {step.title}
+              </h4>
+              <p className="text-neutral-700 text-base md:text-lg leading-relaxed">
+                {step.desc}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function HomePage() {
   const [openFaq, setOpenFaq] = useState(0);
@@ -422,45 +532,7 @@ export default function HomePage() {
             </FadeUp>
           </div>
 
-          {/* Step screenshot from Figma */}
-          <FadeUp>
-            <div className="w-full flex flex-col lg:flex-row items-center gap-8">
-              <div className="lg:w-[55%]">
-                <Image
-                  src="/images/step-screenshot.png"
-                  alt="OmyKra AI assistant interface showing real-time agent guidance"
-                  width={720}
-                  height={443}
-                  className="w-full h-auto rounded-2xl shadow-card"
-                />
-              </div>
-              <div className="lg:w-[45%] space-y-6">
-                {["Rewrite with brand voice", "Get contextual help", "Insert approved answers"].map(
-                  (step, i) => (
-                    <FadeUp key={step} delay={0.1 * (i + 1)}>
-                      <div className="flex items-center gap-6">
-                        <div
-                          className={`w-1 h-[90px] rounded-[10px] ${
-                            i === 0 ? "bg-primary-dark" : "bg-primary-dark/10"
-                          }`}
-                        />
-                        <div className="flex-1">
-                          <h4 className="font-[family-name:var(--font-heading)] text-lg md:text-xl font-medium text-neutral-dark mb-1">
-                            {step}
-                          </h4>
-                          <p className="text-neutral-700 text-sm md:text-base leading-relaxed">
-                            {i === 0 && "Transform any response into your brand's tone and quality standard."}
-                            {i === 1 && "Get real-time suggestions based on your knowledge base and best practices."}
-                            {i === 2 && "Pull pre-approved answers from your library with one click."}
-                          </p>
-                        </div>
-                      </div>
-                    </FadeUp>
-                  )
-                )}
-              </div>
-            </div>
-          </FadeUp>
+          <AICoworkerInteractive />
         </div>
       </section>
 
@@ -661,7 +733,7 @@ export default function HomePage() {
           <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-stretch w-full">
             {/* Traditional AI CX */}
             <ScaleIn className="flex-1">
-              <div className="bg-[rgba(239,68,68,0.05)] rounded-[24px] p-6 md:p-8 shadow-card h-full flex flex-col items-center gap-8 md:gap-12">
+              <div className="bg-[#FEF5F5] rounded-[24px] p-6 md:p-8 shadow-[-7px_24px_48px_0px_rgba(0,0,0,0.1)] h-full flex flex-col items-center gap-8 md:gap-12 border border-transparent">
                 <div className="flex items-center gap-6 w-full justify-between">
                   <Image
                     src="/images/ai-robot.png"
@@ -701,7 +773,7 @@ export default function HomePage() {
 
             {/* OmyKra AI Assisted CX */}
             <ScaleIn delay={0.15} className="flex-1">
-              <div className="bg-[rgba(0,171,69,0.05)] rounded-[24px] p-6 md:p-8 shadow-card h-full flex flex-col items-center gap-8 md:gap-12">
+              <div className="bg-[#F2FBF5] rounded-[24px] p-6 md:p-8 shadow-[-7px_24px_48px_0px_rgba(0,0,0,0.1)] h-full flex flex-col items-center gap-8 md:gap-12 border border-transparent">
                 <div className="flex items-center gap-6 w-full justify-between">
                   <Image
                     src="/images/omykra-human.png"
@@ -751,32 +823,44 @@ export default function HomePage() {
               tag="h2"
               className="font-[family-name:var(--font-heading)] text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-dark leading-tight tracking-tight max-w-3xl mx-auto mb-6"
             />
+            <FadeUp delay={0.15}>
+              <p className="text-neutral-700 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+                We believe AI shouldn&apos;t replace your customer support team. It should help them become better.
+              </p>
+            </FadeUp>
           </div>
 
           <FadeUp className="w-full">
-            <div className="flex flex-col lg:flex-row items-stretch w-full">
-              <div className="lg:w-[595px] flex-shrink-0 bg-[#CEF17B] overflow-hidden">
+            <div className="flex flex-col lg:flex-row items-stretch w-full max-w-[1000px] mx-auto border border-neutral-200 shadow-sm bg-white overflow-hidden">
+              <div className="lg:w-[45%] flex-shrink-0 bg-[#CEF17B] overflow-hidden flex items-end justify-center relative">
                 <Image
                   src="/images/founder-photo.png"
-                  alt="OmyKra Founder"
+                  alt="Geoffery Nnalue, OmyKra Founder"
                   width={640}
                   height={640}
-                  className="w-full h-full object-cover"
+                  className="w-full h-auto object-cover object-bottom"
                 />
               </div>
-              <div className="flex-1 border border-neutral-300 border-l-0 p-10 md:p-12 flex flex-col justify-between">
-                <blockquote className="font-[family-name:var(--font-heading)] text-xl md:text-3xl lg:text-4xl font-medium text-neutral-dark leading-snug tracking-tight">
+              <div className="flex-1 p-10 md:p-16 flex flex-col justify-center relative lg:border-l lg:border-neutral-200">
+                <blockquote className="font-[family-name:var(--font-heading)] text-xl md:text-[28px] font-semibold text-neutral-dark leading-snug tracking-tight z-10 relative">
                   &ldquo;I built the communication standard I wish I had access to
-                  when I was running CX.{" "}
-                  <span className="text-neutral-700">
-                    Not another chatbot, the thing I needed on the floor while
-                    engaging customers.&rdquo;
-                  </span>
+                  when I was running CX. <span className="text-neutral-500 font-medium">Not another chatbot,
+                  the thing I needed on the floor while engaging customers.&rdquo;</span>
                 </blockquote>
-                <div className="mt-8 text-right">
-                  <p className="font-[family-name:var(--font-heading)] text-lg font-medium text-neutral-dark">
-                    Founder, OmyKra
+                
+                <div className="mt-12 z-10 relative space-y-1">
+                  <p className="font-[family-name:var(--font-heading)] text-lg font-bold text-neutral-dark">
+                    Geoffery Nnalue
                   </p>
+                  <p className="text-neutral-500 text-sm">Founder at OmyKra</p>
+                  <p className="text-neutral-500 text-sm">Lead Customer Executive at Goodlord.</p>
+                </div>
+
+                {/* Massive Quote Icon Background */}
+                <div className="absolute right-6 bottom-6 md:right-12 md:bottom-12 select-none z-0">
+                  <svg viewBox="0 0 1024 1024" fill="#CEF17B" xmlns="http://www.w3.org/2000/svg" className="w-[100px] h-[70px] md:w-[160px] md:h-[110px]" preserveAspectRatio="xMidYMid meet">
+                    <path d="M512 512v358.4H153.6V512c0-198.4 160-358.4 358.4-358.4V256C371.2 256 256 371.2 256 512h256zM1024 512v358.4H665.6V512c0-198.4 160-358.4 358.4-358.4V256c-140.8 0-256 115.2-256 256h256z"/>
+                  </svg>
                 </div>
               </div>
             </div>
