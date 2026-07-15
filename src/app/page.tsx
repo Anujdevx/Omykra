@@ -163,47 +163,55 @@ function FAQItem({
   onClick: () => void;
 }) {
   return (
-    <SnappyCard>
+    <motion.div layout className="mb-4">
       <button
         onClick={onClick}
         data-cursor="pointer"
-        className={`w-full text-left rounded-[24px] p-[30px] flex items-start gap-6 transition-all duration-300 ${
+        className={`w-full text-left rounded-2xl p-6 md:p-8 flex items-start gap-4 transition-all duration-300 border ${
           isOpen
-            ? "gradient-primary text-white shadow-card"
-            : "bg-white shadow-card"
+            ? "bg-[#F9FDF2] border-[#CEF17B]"
+            : "bg-white border-neutral-200 hover:border-neutral-300 hover:shadow-md"
         }`}
       >
         <div className="flex-1">
           <h3
-            className={`font-[family-name:var(--font-heading)] text-lg md:text-xl font-medium leading-snug ${
-              isOpen ? "text-white" : "text-neutral-dark"
+            className={`font-[family-name:var(--font-heading)] text-lg md:text-xl font-medium leading-snug transition-colors duration-300 ${
+              isOpen ? "text-primary" : "text-neutral-dark"
             }`}
           >
             {question}
           </h3>
-          <AnimatePresence>
+          <AnimatePresence initial={false}>
             {isOpen && (
-              <motion.p
-                initial={{ height: 0, opacity: 0, marginTop: 0 }}
-                animate={{ height: "auto", opacity: 1, marginTop: 12 }}
-                exit={{ height: 0, opacity: 0, marginTop: 0 }}
-                transition={{ duration: 0.3 }}
-                className="text-white text-sm md:text-base leading-relaxed overflow-hidden"
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                className="overflow-hidden"
               >
-                {answer}
-              </motion.p>
+                <p className="text-neutral-700 text-sm md:text-base leading-relaxed mt-4">
+                  {answer}
+                </p>
+              </motion.div>
             )}
           </AnimatePresence>
         </div>
         <div className="flex-shrink-0 mt-1">
-          {isOpen ? (
-            <Minus size={24} className="text-white" />
-          ) : (
-            <Plus size={24} className="text-neutral-dark" />
-          )}
+          <motion.div
+            animate={{ rotate: isOpen ? 45 : 0 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <Plus
+              size={24}
+              className={`transition-colors duration-300 ${
+                isOpen ? "text-primary" : "text-neutral-dark"
+              }`}
+            />
+          </motion.div>
         </div>
       </button>
-    </SnappyCard>
+    </motion.div>
   );
 }
 
@@ -959,27 +967,37 @@ export default function HomePage() {
       </section>
 
       {/* ── Section 11: FAQ ───────────────────────────────────────────── */}
-      <section className="py-16 md:py-24 lg:py-28">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row justify-between gap-16">
+      <section className="py-16 md:py-24 lg:py-32 bg-white relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 items-start relative">
             {/* Left */}
-            <div className="lg:w-[480px] lg:flex-shrink-0">
+            <div className="lg:w-[420px] lg:flex-shrink-0 lg:sticky lg:top-32">
               <FadeUp>
-                <h2 className="font-[family-name:var(--font-heading)] text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-dark leading-tight tracking-tight max-w-md mb-6">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold mb-6 tracking-wider uppercase">
+                  Got questions?
+                </div>
+                <h2 className="font-[family-name:var(--font-heading)] text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-dark leading-tight tracking-tight mb-6">
                   Frequently Asked Questions.
                 </h2>
               </FadeUp>
               <FadeUp delay={0.15}>
-                <p className="text-neutral-700 text-base md:text-lg leading-relaxed max-w-sm">
+                <p className="text-neutral-600 text-base md:text-lg leading-relaxed mb-8">
                   Everything you need to know before bringing OmyKra into your
                   customer experience workflow. If you don&apos;t see your question
-                  here, we&apos;d happy to walk you through it.
+                  here, we&apos;d be happy to walk you through it.
                 </p>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 text-primary font-medium hover:text-primary-dark transition-colors"
+                >
+                  Talk to our team
+                  <ChevronRight size={16} />
+                </Link>
               </FadeUp>
             </div>
 
             {/* Right: FAQ list */}
-            <div className="flex-1 lg:max-w-[737px] space-y-6">
+            <div className="flex-1 lg:max-w-[640px] w-full">
               {faqData.map((faq, i) => (
                 <FadeUp key={i} delay={0.05 * i}>
                   <FAQItem
