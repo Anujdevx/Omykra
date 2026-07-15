@@ -22,32 +22,71 @@ import {
   Minus,
   Plus,
   ChevronRight,
+  Headset,
+  Activity,
+  UserCheck,
+  Users,
 } from "lucide-react";
 import { useState } from "react";
 
 /* ─── Data from Figma ─────────────────────────────────────────────────────── */
 
+const problemCards = [
+  {
+    iconBg: "bg-[rgba(0,171,69,0.1)]",
+    hoverBg: "hover:bg-[rgba(0,171,69,0.1)]",
+    icon: <Headset size={20} className="text-primary" />,
+    title: "New Hire",
+    description: "Still learning the company's communication standards and relying heavily on teammates for guidance.",
+  },
+  {
+    iconBg: "bg-[rgba(245,158,11,0.1)]",
+    hoverBg: "hover:bg-[rgba(245,158,11,0.1)]",
+    icon: <Activity size={20} className="text-amber-500" />,
+    title: "Busy Agent",
+    description: "Under pressure to reply quickly, increasing the risk of inconsistent communication.",
+  },
+  {
+    iconBg: "bg-[rgba(59,130,246,0.1)]",
+    hoverBg: "hover:bg-[rgba(59,130,246,0.1)]",
+    icon: <UserCheck size={20} className="text-blue-500" />,
+    title: "Experienced Agent",
+    description: "Deliver great customer experiences, but their knowledge often stays with them.",
+  },
+  {
+    iconBg: "bg-[rgba(239,68,68,0.1)]",
+    hoverBg: "hover:bg-[rgba(239,68,68,0.1)]",
+    icon: <Users size={20} className="text-red-500" />,
+    title: "CX Manager",
+    description: "Constantly answering repeat questions instead of focusing on strategic improvements.",
+  },
+];
+
 const featureCards = [
   {
     iconBg: "bg-[rgba(0,171,69,0.1)]",
+    hoverBg: "hover:bg-[rgba(0,171,69,0.1)]",
     icon: <Shield size={24} className="text-primary" />,
     title: "Enterprise Security",
     description: "Modern security purchase.",
   },
   {
     iconBg: "bg-[rgba(245,158,11,0.1)]",
+    hoverBg: "hover:bg-[rgba(245,158,11,0.1)]",
     icon: <Eye size={24} className="text-amber-500" />,
     title: "Human Review",
     description: "Nothing is ever sent automatically.",
   },
   {
     iconBg: "bg-[rgba(59,130,246,0.1)]",
+    hoverBg: "hover:bg-[rgba(59,130,246,0.1)]",
     icon: <Database size={24} className="text-blue-500" />,
     title: "Company Knowledge",
     description: "Only uses information you've approved.",
   },
   {
     iconBg: "bg-[rgba(239,68,68,0.1)]",
+    hoverBg: "hover:bg-[rgba(239,68,68,0.1)]",
     icon: <FileText size={24} className="text-red-500" />,
     title: "GDPR Ready",
     description: "Privacy-first architecture.",
@@ -149,7 +188,7 @@ function FAQItem({
                 animate={{ height: "auto", opacity: 1, marginTop: 12 }}
                 exit={{ height: 0, opacity: 0, marginTop: 0 }}
                 transition={{ duration: 0.3 }}
-                className="text-white/80 text-sm md:text-base leading-relaxed overflow-hidden"
+                className="text-white text-sm md:text-base leading-relaxed overflow-hidden"
               >
                 {answer}
               </motion.p>
@@ -178,9 +217,9 @@ export default function HomePage() {
       <Navbar />
 
       {/* ── Hero Section ──────────────────────────────────────────────── */}
-      <section className="pt-[72px] pb-12 md:pb-16">
-        <div className="max-w-[1280px] mx-auto px-4 md:px-10 pt-6 md:pt-12">
-          <div className="relative overflow-hidden rounded-[40px] md:rounded-[64px] bg-primary px-6 md:px-16 py-16 md:py-24 lg:py-32">
+      <section className="pt-[72px] pb-16 md:pb-24 lg:pb-28">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 md:pt-12">
+          <div className="relative overflow-hidden rounded-[40px] md:rounded-[64px] bg-primary px-6 md:px-16 py-16 md:py-24 lg:py-28">
             {/* Background pattern images from Figma */}
             <div className="absolute inset-0 overflow-hidden">
               <Image
@@ -212,11 +251,11 @@ export default function HomePage() {
               />
             </div>
 
-            <div className="relative z-10 flex flex-col items-center text-center max-w-[1200px] mx-auto gap-10 md:gap-12">
+            <div className="relative z-10 flex flex-col items-center text-center max-w-[1200px] mx-auto">
               {/* Heading + Subtext */}
-              <div className="flex flex-col items-center gap-6 px-4 md:px-10">
+              <div className="px-4 md:px-10">
                 <motion.h1
-                  className="font-[family-name:var(--font-heading)] text-3xl md:text-5xl lg:text-[56px] font-semibold text-white leading-tight md:leading-[1.15] tracking-tight max-w-4xl mx-auto"
+                  className="font-[family-name:var(--font-heading)] text-3xl md:text-5xl lg:text-[56px] font-semibold text-white leading-tight tracking-tight max-w-4xl mx-auto mb-6"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.4, 0.25, 1] }}
@@ -225,7 +264,7 @@ export default function HomePage() {
                 </motion.h1>
 
                 <motion.p
-                  className="text-base md:text-lg text-white/80 max-w-2xl leading-relaxed"
+                  className="text-base md:text-lg text-white max-w-2xl mx-auto leading-relaxed"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
@@ -239,7 +278,7 @@ export default function HomePage() {
 
               {/* CTA Buttons */}
               <motion.div
-                className="flex flex-col sm:flex-row gap-4"
+                className="flex flex-col sm:flex-row gap-4 mt-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
@@ -266,16 +305,16 @@ export default function HomePage() {
       </section>
 
       {/* ── Section 2: Problem Statement ──────────────────────────────── */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-6xl mx-auto px-6 md:px-12">
+      <section className="py-16 md:py-24 lg:py-28">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
             <TypewriterHeader
               text="That Poor Customer Experience Could Have Been Prevented."
               tag="h2"
-              className="font-[family-name:var(--font-heading)] text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-dark leading-tight tracking-tight max-w-3xl mx-auto"
+              className="font-[family-name:var(--font-heading)] text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-dark leading-tight tracking-tight max-w-3xl mx-auto mb-6"
             />
             <FadeUp delay={0.2}>
-              <p className="text-neutral-500 text-base md:text-lg mt-6 leading-relaxed max-w-2xl mx-auto">
+              <p className="text-neutral-700 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
                 Customer experience shouldn&apos;t depend on who replies, how
                 experienced they are, or whether they&apos;re having a good day.
                 Yet that&apos;s exactly what happens in most support teams.
@@ -283,18 +322,75 @@ export default function HomePage() {
             </FadeUp>
           </div>
 
-          {/* Cards visualization from Figma */}
-          <FadeUp>
+          {/* Cards visualization rebuilt from Figma */}
+          <div className="relative mt-12 mb-16 max-w-[1000px] mx-auto">
+            {/* Top Section Wrapper (so lines drop from the cards) */}
             <div className="relative">
-              <Image
-                src="/images/section2-cards.png"
-                alt="Customer experience flow showing how different agents create inconsistent experiences"
-                width={1280}
-                height={484}
-                className="w-full h-auto rounded-[24px] shadow-sm"
-              />
+              {/* Top Row: 4 Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+                {problemCards.map((card, i) => (
+                  <FadeUp key={card.title} delay={0.1 * i} className="h-full">
+                    <div className={`bg-white rounded-[24px] p-6 shadow-card flex flex-col gap-4 h-full transition-colors duration-300 ${card.hoverBg} cursor-default border border-transparent hover:border-primary/20`}>
+                      <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${card.iconBg}`}>
+                        {card.icon}
+                      </div>
+                      <h4 className="font-[family-name:var(--font-heading)] text-lg font-medium text-neutral-dark">
+                        {card.title}
+                      </h4>
+                      <p className="text-neutral-700 text-sm leading-relaxed">
+                        {card.description}
+                      </p>
+                    </div>
+                  </FadeUp>
+                ))}
+              </div>
+
+              {/* Connecting Lines (Desktop only) */}
+              <div className="hidden lg:block absolute left-0 right-0 top-full h-12 pointer-events-none z-0">
+                {/* Vertical drops from each card */}
+                <div className="absolute left-[12.5%] top-0 w-px h-6 border-l-2 border-dashed border-primary" />
+                <div className="absolute left-[37.5%] top-0 w-px h-6 border-l-2 border-dashed border-primary" />
+                <div className="absolute left-[62.5%] top-0 w-px h-6 border-l-2 border-dashed border-primary" />
+                <div className="absolute left-[87.5%] top-0 w-px h-6 border-l-2 border-dashed border-primary" />
+                
+                {/* Horizontal connector */}
+                <div className="absolute left-[12.5%] right-[12.5%] top-6 h-px border-t-2 border-dashed border-primary" />
+                
+                {/* Vertical drop to center card */}
+                <div className="absolute left-1/2 top-6 w-px h-6 border-l-2 border-dashed border-primary" />
+              </div>
             </div>
-          </FadeUp>
+
+            {/* Bottom Card */}
+            <FadeUp delay={0.4}>
+              <div className="mt-6 lg:mt-12 max-w-lg mx-auto relative z-10">
+                <div className="group bg-white hover:bg-primary transition-colors duration-300 rounded-[24px] p-4 md:p-6 shadow-card flex items-center justify-between cursor-default border border-transparent">
+                  {/* Left: Avatar + Name */}
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full overflow-hidden border border-neutral-200 shrink-0">
+                      <Image
+                        src="/images/user-avatar.png" 
+                        alt="Sarah T."
+                        width={48}
+                        height={48}
+                        className="object-cover w-full h-full"
+                      />
+                    </div>
+                    <span className="text-primary group-hover:text-white font-medium text-sm md:text-base transition-colors duration-300">Sarah T.</span>
+                  </div>
+                  {/* Right: Text */}
+                  <div className="text-right">
+                    <h4 className="font-[family-name:var(--font-heading)] text-lg md:text-xl font-semibold text-neutral-dark group-hover:text-white transition-colors duration-300">
+                      One Customer
+                    </h4>
+                    <p className="text-neutral-700 group-hover:text-white/90 text-xs md:text-sm mt-1 transition-colors duration-300">
+                      Four completely different experiences.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </FadeUp>
+          </div>
 
           <FadeUp delay={0.3}>
             <p className="text-center font-[family-name:var(--font-heading)] text-lg md:text-xl font-medium text-neutral-dark mt-12 leading-relaxed max-w-2xl mx-auto">
@@ -308,16 +404,16 @@ export default function HomePage() {
       </section>
 
       {/* ── Section 3: Meet Your AI Coworker ──────────────────────────── */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10 flex flex-col items-center gap-12">
-          <div className="text-center max-w-[1062px]">
+      <section className="py-16 md:py-24 lg:py-28">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-12">
+          <div className="text-center">
             <FadeUp>
-              <h2 className="font-[family-name:var(--font-heading)] text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-dark leading-tight tracking-tight max-w-3xl mx-auto">
+              <h2 className="font-[family-name:var(--font-heading)] text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-dark leading-tight tracking-tight max-w-3xl mx-auto mb-6">
                 Meet Your <span className="text-primary">AI Coworker.</span>
               </h2>
             </FadeUp>
             <FadeUp delay={0.15}>
-              <p className="text-neutral-500 text-base md:text-lg mt-6 leading-relaxed max-w-2xl mx-auto">
+              <p className="text-neutral-700 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
                 Omykra supports your agents while they are replying, helping them
                 find the right answer and communicate it with confidence regardless
                 of who is behind it, how long they have been there and how they are
@@ -328,7 +424,7 @@ export default function HomePage() {
 
           {/* Step screenshot from Figma */}
           <FadeUp>
-            <div className="w-full flex flex-col lg:flex-row items-center gap-12">
+            <div className="w-full flex flex-col lg:flex-row items-center gap-8">
               <div className="lg:w-[55%]">
                 <Image
                   src="/images/step-screenshot.png"
@@ -352,7 +448,7 @@ export default function HomePage() {
                           <h4 className="font-[family-name:var(--font-heading)] text-lg md:text-xl font-medium text-neutral-dark mb-1">
                             {step}
                           </h4>
-                          <p className="text-neutral-500 text-sm md:text-base leading-relaxed">
+                          <p className="text-neutral-700 text-sm md:text-base leading-relaxed">
                             {i === 0 && "Transform any response into your brand's tone and quality standard."}
                             {i === 1 && "Get real-time suggestions based on your knowledge base and best practices."}
                             {i === 2 && "Pull pre-approved answers from your library with one click."}
@@ -369,16 +465,16 @@ export default function HomePage() {
       </section>
 
       {/* ── Section 4: Built For Teams ─────────────────────────────────── */}
-      <section id="features" className="py-16 md:py-24">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10 flex flex-col items-center gap-12">
-          <div className="text-center max-w-[1062px]">
+      <section id="features" className="py-16 md:py-24 lg:py-28">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-12">
+          <div className="text-center">
             <TypewriterHeader
               text="Built For Teams That Care About Consistency."
               tag="h2"
-              className="font-[family-name:var(--font-heading)] text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-dark leading-tight tracking-tight max-w-3xl mx-auto"
+              className="font-[family-name:var(--font-heading)] text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-dark leading-tight tracking-tight max-w-3xl mx-auto mb-6"
             />
             <FadeUp delay={0.15}>
-              <p className="text-neutral-500 text-base md:text-lg mt-6 leading-relaxed max-w-2xl mx-auto">
+              <p className="text-neutral-700 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
                 Whether you&apos;re onboarding new agents, scaling rapidly or
                 supporting thousands of conservations every month, OmyKra helps
                 your team deliver the same standard every time.
@@ -386,29 +482,38 @@ export default function HomePage() {
             </FadeUp>
           </div>
 
-          <FadeUp>
-            <Image
-              src="/images/section4-features.png"
-              alt="OmyKra feature cards showing team consistency tools"
-              width={1280}
-              height={532}
-              className="w-full h-auto"
-            />
-          </FadeUp>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full mt-4">
+            {[
+              { num: "01", text: "Handle hundreds or thousands of customer conversations every month" },
+              { num: "02", text: "Want every agent to deliver consistent customer experiences" },
+              { num: "03", text: "Want to onboard new hires faster and give them the confidence as soon as possible" },
+              { num: "04", text: "Are scaling customer support without sacrificing quality" },
+              { num: "05", text: "See customer experience as a competitive advantage" },
+            ].map((card, i) => (
+              <FadeUp key={card.num} delay={0.1 * i} className="h-full">
+                <div className="bg-[rgba(0,171,69,0.04)] rounded-[24px] p-8 md:p-10 h-full flex flex-col gap-4 hover:-translate-y-2 hover:shadow-lg transition-all duration-300 border border-transparent hover:border-primary/20 cursor-default">
+                  <span className="text-primary font-semibold text-lg md:text-xl">{card.num}</span>
+                  <p className="text-neutral-700 text-lg md:text-xl font-medium leading-relaxed">
+                    {card.text}
+                  </p>
+                </div>
+              </FadeUp>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ── Section 5: Integrations ───────────────────────────────────── */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10 flex flex-col items-center gap-12">
-          <div className="text-center max-w-[1062px]">
+      <section className="py-16 md:py-24 lg:py-28">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-12">
+          <div className="text-center">
             <FadeUp>
-              <h2 className="font-[family-name:var(--font-heading)] text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-dark leading-tight tracking-tight max-w-3xl mx-auto">
+              <h2 className="font-[family-name:var(--font-heading)] text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-dark leading-tight tracking-tight max-w-3xl mx-auto mb-6">
                 Built Into The Tools You Already Use.
               </h2>
             </FadeUp>
             <FadeUp delay={0.15}>
-              <p className="text-neutral-500 text-base md:text-lg mt-6 leading-relaxed max-w-2xl mx-auto">
+              <p className="text-neutral-700 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
                 OmyKra works alongside the platforms your team already relies on,
                 so agents stay in their existing workflow while receiving guidance
                 exactly when they need it.
@@ -421,7 +526,7 @@ export default function HomePage() {
             <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white to-transparent z-10" />
             <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent z-10" />
             <motion.div
-              className="flex gap-[60px] items-center"
+              className="flex gap-6 sm:gap-8 md:gap-10 items-center justify-center"
               animate={{ x: [0, -1200] }}
               transition={{
                 duration: 25,
@@ -436,7 +541,7 @@ export default function HomePage() {
                   alt={logo.alt}
                   width={logo.w}
                   height={logo.h}
-                  className="flex-shrink-0 opacity-60 hover:opacity-100 transition-opacity duration-300 object-contain"
+                  className="flex-shrink-0 transition-opacity duration-300 object-contain"
                 />
               ))}
             </motion.div>
@@ -445,33 +550,33 @@ export default function HomePage() {
       </section>
 
       {/* ── Section 6: With/Without OmyKra ────────────────────────────── */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
-          <div className="flex flex-col lg:flex-row justify-between items-center gap-12 lg:gap-16">
+      <section className="py-16 md:py-24 lg:py-28">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row justify-between items-center gap-8 lg:gap-12">
             {/* Left text */}
-            <div className="lg:w-[435px] space-y-10 shrink-0">
-              <div className="space-y-6">
-                <FadeUp>
-                  <h2 className="font-[family-name:var(--font-heading)] text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-dark leading-tight tracking-tight">
-                    CX Without <span className="text-primary">OmyKra?</span>
-                  </h2>
-                </FadeUp>
-                <FadeUp delay={0.15}>
-                  <p className="text-neutral-500 text-base md:text-lg leading-relaxed max-w-md">
-                    The difference isn&apos;t how hard your team works. It&apos;s
-                    whether every agent has the same support when helping customers.
-                  </p>
-                </FadeUp>
-              </div>
+            <div className="lg:w-[435px] shrink-0">
+              <FadeUp>
+                <h2 className="font-[family-name:var(--font-heading)] text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-dark leading-tight tracking-tight mb-6">
+                  CX Without <span className="text-primary">OmyKra?</span>
+                </h2>
+              </FadeUp>
+              <FadeUp delay={0.15}>
+                <p className="text-neutral-700 text-base md:text-lg leading-relaxed max-w-md">
+                  The difference isn&apos;t how hard your team works. It&apos;s
+                  whether every agent has the same support when helping customers.
+                </p>
+              </FadeUp>
               <FadeUp delay={0.25}>
-                <Link
-                  href="/auth"
-                  className="inline-flex items-center justify-center gap-2 bg-primary-dark text-white font-semibold text-base px-8 py-4 rounded-full hover:bg-primary transition-all duration-200 group"
-                  data-cursor="pointer"
-                >
-                  <ArrowUpRight size={20} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                  Book a Walkthrough
-                </Link>
+                <div className="mt-8">
+                  <Link
+                    href="/auth"
+                    className="inline-flex items-center justify-center gap-2 bg-primary-dark text-white font-semibold text-base px-8 py-4 rounded-full hover:bg-primary transition-all duration-200 group"
+                    data-cursor="pointer"
+                  >
+                    <ArrowUpRight size={20} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    Book a Walkthrough
+                  </Link>
+                </div>
               </FadeUp>
             </div>
 
@@ -490,16 +595,16 @@ export default function HomePage() {
       </section>
 
       {/* ── Section 7: Security ───────────────────────────────────────── */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10 flex flex-col items-center gap-12">
-          <div className="text-center max-w-[1062px]">
+      <section className="py-16 md:py-24 lg:py-28">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-12">
+          <div className="text-center">
             <TypewriterHeader
               text="Secured From Day One!"
               tag="h2"
-              className="font-[family-name:var(--font-heading)] text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-dark leading-tight tracking-tight max-w-3xl mx-auto"
+              className="font-[family-name:var(--font-heading)] text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-dark leading-tight tracking-tight max-w-3xl mx-auto mb-6"
             />
             <FadeUp delay={0.15}>
-              <p className="text-neutral-500 text-base md:text-lg mt-6 leading-relaxed max-w-2xl mx-auto">
+              <p className="text-neutral-700 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
                 Designed with enterprise teams in mind. Built around transparency,
                 security, and human control.
               </p>
@@ -507,13 +612,13 @@ export default function HomePage() {
           </div>
 
           <StaggerContainer
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 w-full"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full"
             staggerDelay={0.08}
           >
             {featureCards.map((card) => (
               <StaggerItem key={card.title}>
                 <SnappyCard className="h-full">
-                  <div className="h-full bg-white rounded-[16px] p-8 md:p-10 shadow-card flex flex-col gap-6">
+                  <div className={`h-full bg-white rounded-[16px] p-6 md:p-8 shadow-card flex flex-col gap-6 transition-colors duration-300 ${card.hoverBg}`}>
                     <div
                       className={`w-12 h-12 rounded-lg flex items-center justify-center ${card.iconBg}`}
                     >
@@ -523,7 +628,7 @@ export default function HomePage() {
                       <h4 className="font-[family-name:var(--font-heading)] text-lg md:text-xl font-medium text-neutral-dark leading-snug">
                         {card.title}
                       </h4>
-                      <p className="text-neutral-500 text-sm leading-relaxed">
+                      <p className="text-neutral-700 text-sm leading-relaxed">
                         {card.description}
                       </p>
                     </div>
@@ -536,27 +641,27 @@ export default function HomePage() {
       </section>
 
       {/* ── Section 8: AI CX vs AI Assisted CX ────────────────────────── */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10 flex flex-col items-center gap-12">
-          <div className="text-center max-w-[1062px]">
+      <section className="py-16 md:py-24 lg:py-28">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-12">
+          <div className="text-center">
             <FadeUp>
-              <h2 className="font-[family-name:var(--font-heading)] text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-dark leading-tight tracking-tight max-w-3xl mx-auto">
+              <h2 className="font-[family-name:var(--font-heading)] text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-dark leading-tight tracking-tight max-w-3xl mx-auto mb-6">
                 AI CX or{" "}
                 <span className="text-primary">AI Assisted CX (OmyKra)?</span>
               </h2>
             </FadeUp>
             <FadeUp delay={0.15}>
-              <p className="text-neutral-500 text-base md:text-lg mt-6 leading-relaxed max-w-2xl mx-auto">
+              <p className="text-neutral-700 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
                 We believe AI shouldn&apos;t replace your customer support team. It
                 should help them become better.
               </p>
             </FadeUp>
           </div>
 
-          <div className="flex flex-col lg:flex-row gap-[60px] items-stretch w-full">
+          <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-stretch w-full">
             {/* Traditional AI CX */}
             <ScaleIn className="flex-1">
-              <div className="bg-[rgba(239,68,68,0.05)] rounded-[24px] p-10 lg:p-12 shadow-card h-full flex flex-col items-center gap-16">
+              <div className="bg-[rgba(239,68,68,0.05)] rounded-[24px] p-6 md:p-8 shadow-card h-full flex flex-col items-center gap-8 md:gap-12">
                 <div className="flex items-center gap-6 w-full justify-between">
                   <Image
                     src="/images/ai-robot.png"
@@ -596,7 +701,7 @@ export default function HomePage() {
 
             {/* OmyKra AI Assisted CX */}
             <ScaleIn delay={0.15} className="flex-1">
-              <div className="bg-[rgba(0,171,69,0.05)] rounded-[24px] p-10 lg:p-12 shadow-card h-full flex flex-col items-center gap-16">
+              <div className="bg-[rgba(0,171,69,0.05)] rounded-[24px] p-6 md:p-8 shadow-card h-full flex flex-col items-center gap-8 md:gap-12">
                 <div className="flex items-center gap-6 w-full justify-between">
                   <Image
                     src="/images/omykra-human.png"
@@ -638,13 +743,13 @@ export default function HomePage() {
       </section>
 
       {/* ── Section 9: Founder ────────────────────────────────────────── */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10 flex flex-col items-center gap-12">
-          <div className="text-center max-w-[1062px]">
+      <section className="py-16 md:py-24 lg:py-28">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-12">
+          <div className="text-center">
             <TypewriterHeader
               text="Built By Someone Who Lived The Problem."
               tag="h2"
-              className="font-[family-name:var(--font-heading)] text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-dark leading-tight tracking-tight max-w-3xl mx-auto"
+              className="font-[family-name:var(--font-heading)] text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-dark leading-tight tracking-tight max-w-3xl mx-auto mb-6"
             />
           </div>
 
@@ -663,7 +768,7 @@ export default function HomePage() {
                 <blockquote className="font-[family-name:var(--font-heading)] text-xl md:text-3xl lg:text-4xl font-medium text-neutral-dark leading-snug tracking-tight">
                   &ldquo;I built the communication standard I wish I had access to
                   when I was running CX.{" "}
-                  <span className="text-neutral-500">
+                  <span className="text-neutral-700">
                     Not another chatbot, the thing I needed on the floor while
                     engaging customers.&rdquo;
                   </span>
@@ -680,16 +785,16 @@ export default function HomePage() {
       </section>
 
       {/* ── Section 10: Pricing ───────────────────────────────────────── */}
-      <section id="pricing" className="py-16 md:py-24">
-        <div className="max-w-[1062px] mx-auto px-6 lg:px-10">
+      <section id="pricing" className="py-16 md:py-24 lg:py-28">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 md:mb-16 text-center">
             <TypewriterHeader
               text="Built For Teams Who Already Have A Standard Worth Protecting."
               tag="h2"
-              className="font-[family-name:var(--font-heading)] text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-dark leading-tight tracking-tight max-w-3xl mx-auto"
+              className="font-[family-name:var(--font-heading)] text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-dark leading-tight tracking-tight max-w-3xl mx-auto mb-6"
             />
             <FadeUp delay={0.15}>
-              <p className="text-neutral-500 text-base md:text-lg mt-6 leading-relaxed max-w-2xl mx-auto">
+              <p className="text-neutral-700 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
                 Everyone organisation is different. We&apos;ll tailor OmyKra to
                 your team, your workflow, and your standards.
               </p>
@@ -699,7 +804,7 @@ export default function HomePage() {
           <FadeUp>
             <div className="flex flex-col lg:flex-row justify-between items-start gap-10">
               {/* Pricing Card */}
-              <div className="bg-white rounded-[24px] shadow-card p-10 lg:p-12 flex flex-col items-center gap-6 w-full lg:w-[520px]">
+              <div className="bg-white rounded-[24px] shadow-card p-6 md:p-8 flex flex-col items-center gap-6 w-full lg:w-[520px]">
                 <span className="inline-block bg-[rgba(0,171,69,0.05)] text-primary text-sm font-medium px-5 py-2.5 rounded-full">
                   STARTS FROM
                 </span>
@@ -707,9 +812,9 @@ export default function HomePage() {
                   <span className="font-[family-name:var(--font-heading)] text-4xl md:text-5xl font-semibold text-neutral-dark">
                     £2,500
                   </span>
-                  <span className="text-neutral-500 text-lg">/month</span>
+                  <span className="text-neutral-700 text-lg">/month</span>
                 </div>
-                <p className="text-neutral-500 text-sm text-center max-w-[400px]">
+                <p className="text-neutral-700 text-sm text-center max-w-[400px]">
                   Every organization is different. That&apos;s why OmyKra is
                   customized to your team, your workflow, and your standards.
                 </p>
@@ -721,7 +826,7 @@ export default function HomePage() {
                   >
                     Book a Walkthrough
                   </Link>
-                  <p className="text-center text-xs text-neutral-500">
+                  <p className="text-center text-xs text-neutral-700">
                     No credit card required • 14-day free pilot
                   </p>
                 </div>
@@ -755,7 +860,7 @@ export default function HomePage() {
                         <h4 className="font-[family-name:var(--font-heading)] text-xl md:text-2xl font-medium text-neutral-dark mb-2">
                           {option.title}
                         </h4>
-                        <p className="text-neutral-500 text-sm md:text-base leading-relaxed">
+                        <p className="text-neutral-700 text-sm md:text-base leading-relaxed">
                           {option.desc}
                         </p>
                       </div>
@@ -770,18 +875,18 @@ export default function HomePage() {
       </section>
 
       {/* ── Section 11: FAQ ───────────────────────────────────────────── */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
+      <section className="py-16 md:py-24 lg:py-28">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row justify-between gap-16">
             {/* Left */}
             <div className="lg:w-[480px] lg:flex-shrink-0">
               <FadeUp>
-                <h2 className="font-[family-name:var(--font-heading)] text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-dark leading-tight tracking-tight max-w-md">
+                <h2 className="font-[family-name:var(--font-heading)] text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-dark leading-tight tracking-tight max-w-md mb-6">
                   Frequently Asked Questions.
                 </h2>
               </FadeUp>
               <FadeUp delay={0.15}>
-                <p className="text-neutral-500 text-base md:text-lg mt-6 leading-relaxed max-w-sm">
+                <p className="text-neutral-700 text-base md:text-lg leading-relaxed max-w-sm">
                   Everything you need to know before bringing OmyKra into your
                   customer experience workflow. If you don&apos;t see your question
                   here, we&apos;d happy to walk you through it.
@@ -807,8 +912,8 @@ export default function HomePage() {
       </section>
 
       {/* ── Section 13: Bottom CTA ────────────────────────────────────── */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-[1280px] mx-auto px-4 md:px-10">
+      <section className="py-16 md:py-24 lg:py-28">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScaleIn>
             <div className="relative overflow-hidden bg-primary rounded-[40px] md:rounded-[64px] px-6 md:px-16 py-16 md:py-24 text-center">
               {/* Background patterns */}
@@ -842,18 +947,18 @@ export default function HomePage() {
                 />
               </div>
 
-              <div className="relative z-10 max-w-[800px] mx-auto flex flex-col items-center gap-10 md:gap-12">
-                <div className="space-y-6">
-                  <h2 className="font-[family-name:var(--font-heading)] text-3xl md:text-5xl lg:text-[56px] font-semibold text-white leading-tight md:leading-[1.15] tracking-tight max-w-3xl mx-auto">
+              <div className="relative z-10 max-w-[800px] mx-auto flex flex-col items-center">
+                <div>
+                  <h2 className="font-[family-name:var(--font-heading)] text-3xl md:text-5xl lg:text-[56px] font-semibold text-white leading-tight md:leading-[1.15] tracking-tight max-w-3xl mx-auto mb-6">
                     From Their First Day, To Your Busiest Day,{"\n"}Same Quality.
                   </h2>
-                  <p className="text-white/80 text-base md:text-lg leading-relaxed max-w-md mx-auto">
+                  <p className="text-white text-base md:text-lg leading-relaxed max-w-md mx-auto">
                     Build a walkthrough and see how OmyKra helps every agent deliver
                     the same communication standard.
                   </p>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-4">
+                <div className="flex flex-col sm:flex-row gap-4 mt-8">
                   <Link
                     href="/auth"
                     className="inline-flex items-center justify-center gap-2 bg-[#CEF17B] text-primary-dark font-semibold text-base px-8 py-4 rounded-full hover:brightness-105 transition-all duration-200 shadow-card group"
